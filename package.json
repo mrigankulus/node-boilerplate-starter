@@ -1,0 +1,94 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Kriasoft (https://github.com/kriasoft)",
+  "workspaces": [
+    "api",
+    "db",
+    "env"
+  ],
+  "scripts": {
+    "start": "yarn workspaces foreach -ip run start",
+    "g:lint": "cd $INIT_CWD && eslint --cache",
+    "g:format": "CONFIG=\"$(pwd)/package.json\" IGNORE=\"$(pwd)/.prettierignore\" && cd $INIT_CWD && prettier --config \"$CONFIG\" --ignore-path \"$IGNORE\"",
+    "db:version": "yarn workspace db version",
+    "db:change": "yarn workspace db change",
+    "db:migrate": "yarn workspace db migrate",
+    "db:rollback": "yarn workspace db rollback",
+    "db:seed": "yarn workspace db seed",
+    "db:reset": "yarn workspace db reset",
+    "db:backup": "yarn workspace db backup",
+    "db:restore": "yarn workspace db restore",
+    "db:repl": "yarn workspace db repl",
+    "db:psql": "yarn workspace db psql",
+    "api:start": "yarn workspace api start",
+    "api:build": "yarn workspace api build",
+    "api:update-schema": "yarn workspace api update-schema",
+    "api:update-types": "yarn workspace api update-types"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/register": "^7.10.5",
+    "@types/faker": "^4.1.12",
+    "@types/node": "^14.0.26",
+    "@yarnpkg/pnpify": "2.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "faker": "^4.1.0",
+    "husky": "^4.2.5",
+    "knex": "^0.21.2",
+    "minimist": "^1.2.5",
+    "nanoid": "^3.1.10",
+    "pg": "^8.3.0",
+    "prettier": "2.0.5",
+    "typescript": "3.9.7"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always",
+    "requirePragma": false,
+    "insertPragma": false,
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": false,
+    "endOfLine": "lf"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 9
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo \"TODO: Add pre-commit hook\""
+    }
+  },
+  "private": true
+}
